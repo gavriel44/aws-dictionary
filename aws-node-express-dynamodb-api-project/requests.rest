@@ -26,7 +26,7 @@ GET http://localhost:3000/setup
 ### -----------------------------------------------------------
 
 
-GET https://v8pauve0t1.execute-api.us-east-1.amazonaws.com/word/Dacapo
+GET https://v8pauve0t1.execute-api.us-east-1.amazonaws.com/word/Zany
 
 ###
 
@@ -34,7 +34,7 @@ GET https://v8pauve0t1.execute-api.us-east-1.amazonaws.com/word/Zany/v
 
 ###
 
-GET https://v8pauve0t1.execute-api.us-east-1.amazonaws.com/partOfSpeech/n?letter=Z
+GET https://v8pauve0t1.execute-api.us-east-1.amazonaws.com/partOfSpeech/n
 
 
 ###

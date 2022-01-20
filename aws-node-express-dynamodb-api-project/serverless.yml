@@ -28,6 +28,8 @@ provider:
             - dynamodb:DeleteItem
           Resource:
             - Fn::GetAtt: [DictionaryTable, Arn]
+            - Fn::Join:
+                ["/", ["Fn::GetAtt": [DictionaryTable, Arn], "index", "*"]]
   environment:
     DICTIONARY_TABLE: ${self:custom.tableName}
 

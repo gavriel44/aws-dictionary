@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "deploy": "serverless deploy",
+    "deploy:func": "serverless deploy function -f api",
     "x": "serverless plugin install -n serverless-dynamodb-local",
     "y": "serverless plugin install -n serverless-offline",
     "dev": "serverless offline start",
