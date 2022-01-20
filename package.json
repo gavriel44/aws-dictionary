@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/gavriel44/aws-dictionary-back-end/issues"
   },
-  "homepage": "https://github.com/gavriel44/aws-dictionary-back-end#readme"
+  "homepage": "https://github.com/gavriel44/aws-dictionary-back-end#readme",
+  "dependencies": {
+    "serverless": "^2.72.0"
+  }
 }

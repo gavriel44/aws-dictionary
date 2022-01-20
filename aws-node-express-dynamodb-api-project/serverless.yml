@@ -43,11 +43,26 @@ resources:
       Type: AWS::DynamoDB::Table
       Properties:
         AttributeDefinitions:
-          - AttributeName: userId
+          - AttributeName: word
+            AttributeType: S
+          - AttributeName: partOfSpeech
+            AttributeType: S
+          - AttributeName: firstLetter
             AttributeType: S
         KeySchema:
-          - AttributeName: userId
+          - AttributeName: word
             KeyType: HASH
+          - AttributeName: partOfSpeech
+            KeyType: RANGE
+        GlobalSecondaryIndexes:
+          - IndexName: partOfSpeechIndex
+            KeySchema:
+              - AttributeName: partOfSpeech
+                KeyType: HASH
+              - AttributeName: firstLetter
+                KeyType: RANGE
+            Projection:
+              ProjectionType: "ALL"
         BillingMode: PAY_PER_REQUEST
         TableName: ${self:custom.tableName}
 
