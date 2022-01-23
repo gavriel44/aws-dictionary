@@ -1,4 +1,4 @@
-import { Box, FormGroup, TextField, Typography } from "@mui/material";
+import { Box, Button, FormGroup, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
 // import Image from "./test4.jpg";
 import { Paper } from "@mui/material";
@@ -6,6 +6,8 @@ import "./homeStyle.css";
 import SearchIcon from "@mui/icons-material/Search";
 import { useNavigate } from "react-router-dom";
 import { lettersOnly } from "../utils/help";
+import { purple } from "@mui/material/colors";
+import { styled, alpha } from "@mui/material/styles";
 
 export default function Home() {
   const [inputState, setInputState] = useState("");
@@ -14,6 +16,16 @@ export default function Home() {
     e.preventDefault();
     navigate(`words/${lettersOnly(inputState)}`);
   };
+
+  const ColorButton = styled(Button)(({ theme }) => ({
+    color: theme.palette.getContrastText(purple[900]),
+    backgroundColor: purple[900],
+    "&:hover": {
+      backgroundColor: purple[700],
+    },
+    marginLeft: "20px",
+    width: "200px",
+  }));
 
   return (
     <div>
@@ -85,6 +97,8 @@ export default function Home() {
               value={inputState}
               onChange={(e) => setInputState(e.target.value)}
             />
+
+            <ColorButton onClick={handleSubmit}>Search</ColorButton>
           </Box>
         </div>
       </section>

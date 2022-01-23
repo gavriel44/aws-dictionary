@@ -84,10 +84,6 @@ export default function SearchAppBar() {
     setAnchorEl(null);
   };
 
-  React.useEffect(() => {
-    console.log(searchInputState);
-  }, [searchInputState]);
-
   const inputRef = React.useRef(null);
 
   const handleEnterKeyUp = (e) => {
@@ -132,7 +128,14 @@ export default function SearchAppBar() {
               "aria-labelledby": "basic-button",
             }}
           >
-            <MenuItem onClick={handleClose}>Home</MenuItem>
+            <MenuItem
+              onClick={() => {
+                handleClose();
+                navigate("/");
+              }}
+            >
+              Home
+            </MenuItem>
             <MenuItem onClick={handleClose}>Search history</MenuItem>
             <MenuItem onClick={handleClose}>Surprise me!</MenuItem>
           </Menu>
