@@ -11,6 +11,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import { Button, Menu, MenuItem } from "@mui/material";
 import { blue, purple } from "@mui/material/colors";
 import { useNavigate } from "react-router-dom";
+import { lettersOnly } from "../utils/help";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -96,7 +97,7 @@ export default function SearchAppBar() {
       e.key === "Enter" &&
       searchInputState !== ""
     ) {
-      navigate(`/words/${searchInputState}`);
+      navigate(`/words/${lettersOnly(searchInputState)}`);
     }
   };
 

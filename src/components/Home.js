@@ -5,13 +5,14 @@ import { Paper } from "@mui/material";
 import "./homeStyle.css";
 import SearchIcon from "@mui/icons-material/Search";
 import { useNavigate } from "react-router-dom";
+import { lettersOnly } from "../utils/help";
 
 export default function Home() {
   const [inputState, setInputState] = useState("");
   const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate(`words/${inputState}`);
+    navigate(`words/${lettersOnly(inputState)}`);
   };
 
   return (

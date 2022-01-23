@@ -1,11 +1,12 @@
 import { Block } from "@mui/icons-material";
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { lettersOnly } from "../utils/help";
 
 export default function WordDefinition({ word }) {
   const navigate = useNavigate();
   const handleWordClick = (e) => {
-    const word = e.target.innerText;
+    const word = lettersOnly(e.target.innerText);
     navigate(`../${word}`);
   };
   let wordClass;
