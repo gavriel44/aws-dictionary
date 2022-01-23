@@ -10,17 +10,20 @@ export default function Word() {
   if (isLoading) {
     return <div>Loading</div>;
   }
-  return (
-    <div className="word-block">
-      <h1>{currentWord}</h1>
-      {wordDefinition.map((partOfSpeechDefinition) => {
-        return (
-          <WordDefinition
-            key={partOfSpeechDefinition.definition}
-            word={partOfSpeechDefinition}
-          />
-        );
-      })}
-    </div>
-  );
+  if (currentWord !== []) {
+    return (
+      <div className="word-block">
+        <h1>{currentWord}</h1>
+        {wordDefinition.map((partOfSpeechDefinition) => {
+          return (
+            <WordDefinition
+              key={partOfSpeechDefinition.definition}
+              word={partOfSpeechDefinition}
+            />
+          );
+        })}
+      </div>
+    );
+  }
+  return <div style={{ color: "white" }}>not found</div>;
 }
