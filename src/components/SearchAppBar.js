@@ -9,7 +9,7 @@ import InputBase from "@mui/material/InputBase";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import { Button, Menu, MenuItem } from "@mui/material";
-import { blue, purple } from "@mui/material/colors";
+import { purple } from "@mui/material/colors";
 import { useNavigate } from "react-router-dom";
 import { lettersOnly } from "../utils/help";
 
@@ -86,24 +86,24 @@ export default function SearchAppBar() {
 
   const inputRef = React.useRef(null);
 
-  const handleEnterKeyUp = (e) => {
-    // console.log("test", inputRef.current, "active", document.activeElement);
-    if (
-      document.activeElement === inputRef.current &&
-      e.key === "Enter" &&
-      searchInputState !== ""
-    ) {
-      navigate(`/words/${lettersOnly(searchInputState)}`);
-    }
-  };
-
   React.useEffect(() => {
+    const handleEnterKeyUp = (e) => {
+      // console.log("test", inputRef.current, "active", document.activeElement);
+      // console.log("input: ", searchInputState);
+      if (
+        document.activeElement === inputRef.current &&
+        e.key === "Enter" &&
+        inputRef.current.value !== ""
+      ) {
+        navigate(`/words/${lettersOnly(inputRef.current.value)}`);
+      }
+    };
     window.addEventListener("keyup", handleEnterKeyUp);
 
     return () => {
       window.removeEventListener("keyup", handleEnterKeyUp);
     };
-  }, [searchInputState]);
+  }, [navigate]);
 
   return (
     <Box sx={{ flexGrow: 1, display: "flex" }}>
@@ -184,7 +184,7 @@ export default function SearchAppBar() {
                 "aria-label": "search",
                 value: searchInputState,
                 onChange: (e) => {
-                  console.log("e");
+                  // console.log("e");
                   setSearchInputState(e.target.value);
                 },
               }}

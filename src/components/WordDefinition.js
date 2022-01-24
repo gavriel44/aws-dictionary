@@ -1,6 +1,5 @@
-import { Block } from "@mui/icons-material";
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { lettersOnly } from "../utils/help";
 
 export default function WordDefinition({ word }) {
@@ -9,10 +8,10 @@ export default function WordDefinition({ word }) {
     const word = lettersOnly(e.target.innerText);
     navigate(`../${word}`);
   };
-  let wordClass;
-  if (word.partOfSpeech === "n") {
-    wordClass = "noun";
-  }
+  // let wordClass;
+  // if (word.partOfSpeech === "n") {
+  //   wordClass = "noun";
+  // }
   return (
     <div className={`${word.partOfSpeech} word-definition`}>
       {word.partOfSpeech !== "null" ? <h3>As a {word.partOfSpeech}</h3> : null}

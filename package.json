@@ -23,7 +23,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "aws s3 sync build/ s3://gavri-dictionary-front-bucket"
+    "deploy": "aws s3 sync build/ s3://gavri-front-bucket"
   },
   "eslintConfig": {
     "extends": [
@@ -42,5 +42,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "homepage": "."
 }
