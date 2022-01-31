@@ -1,12 +1,13 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useOutletContext } from "react-router-dom";
 import "./wordsStyle.css";
 
 export default function Words() {
+  const context = useOutletContext();
   return (
     <div className="words">
       {/* this is words */}
-      <Outlet />
+      <Outlet context={context} />
     </div>
   );
 }

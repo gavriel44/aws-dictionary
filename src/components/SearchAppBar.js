@@ -84,6 +84,19 @@ export default function SearchAppBar() {
     setAnchorEl(null);
   };
 
+  const handleMenuNavigate = (link) => {
+    return () => {
+      handleClose();
+      navigate(link);
+    };
+  };
+
+  const handleColorButtonNavigate = (link) => {
+    return () => {
+      navigate(link);
+    };
+  };
+
   const inputRef = React.useRef(null);
 
   React.useEffect(() => {
@@ -128,15 +141,10 @@ export default function SearchAppBar() {
               "aria-labelledby": "basic-button",
             }}
           >
-            <MenuItem
-              onClick={() => {
-                handleClose();
-                navigate("/");
-              }}
-            >
-              Home
+            <MenuItem onClick={handleMenuNavigate("/")}>Home</MenuItem>
+            <MenuItem onClick={handleMenuNavigate("/words")}>
+              Search history
             </MenuItem>
-            <MenuItem onClick={handleClose}>Search history</MenuItem>
             <MenuItem onClick={handleClose}>Surprise me!</MenuItem>
           </Menu>
           <Typography
@@ -162,14 +170,12 @@ export default function SearchAppBar() {
               justifyContent: "flex-start",
             }}
           >
-            <ColorButton
-              onClick={() => {
-                navigate("/");
-              }}
-            >
+            <ColorButton onClick={handleColorButtonNavigate("/")}>
               Home
             </ColorButton>
-            <ColorButton>Search history</ColorButton>
+            <ColorButton onClick={handleColorButtonNavigate("/words")}>
+              Search history
+            </ColorButton>
             <ColorButton>Surprise me!</ColorButton>
           </Box>
           <Search>

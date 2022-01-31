@@ -1,11 +1,21 @@
-import React from "react";
-import { useParams } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useOutletContext, useParams } from "react-router-dom";
 import { useDictionaryFetch } from "../hooks/useDictionaryFetch";
 import WordDefinition from "./WordDefinition";
 
-export default function Word() {
+export default function WordBlock() {
+  const [setSearchHistory] = useOutletContext();
   const { word: currentWord } = useParams();
   const { wordDefinition, isLoading } = useDictionaryFetch(currentWord);
+
+  useEffect(() => {
+    setSearchHistory((previousHistory) => {
+      return {
+        ...previousHistory,
+        [currentWord]: wordDefinition,
+      };
+    });
+  }, [currentWord, setSearchHistory, wordDefinition]);
 
   if (isLoading) {
     return <div>Loading</div>;

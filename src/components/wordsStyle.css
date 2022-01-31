@@ -7,17 +7,18 @@
   font-size: 1.1rem;
 }
 
-.word-block {
+.word-block,
+.word-history {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.n {
+/* .n {
 }
 
 .v {
-}
+} */
 
 .words {
   /* width: 80%; */

@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from "./App";
 import Home from "./components/HomePage/Home";
 import SearchHistory from "./components/SearchHistory";
-import Word from "./components/WordBlock";
+import WordBlock from "./components/WordBlock";
 import Words from "./components/Words";
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
@@ -18,7 +18,7 @@ render(
       <Route path="/" element={<App />}>
         <Route index element={<Home />} />
         <Route path="words" element={<Words />}>
-          <Route path=":word" element={<Word />} />
+          <Route path=":word" element={<WordBlock />} />
           {/* <Route path="new" element={<NewTeamForm />} /> */}
           <Route index element={<SearchHistory />} />
         </Route>
