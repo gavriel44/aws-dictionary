@@ -4,7 +4,8 @@ import { useDictionaryFetch } from "../hooks/useDictionaryFetch";
 import WordDefinition from "./WordDefinition";
 
 export default function WordBlock() {
-  const [setSearchHistory] = useOutletContext();
+  // eslint-disable-next-line no-unused-vars
+  const [searchHistory, setSearchHistory] = useOutletContext();
   const { word: currentWord } = useParams();
   const { wordDefinition, isLoading } = useDictionaryFetch(currentWord);
 
