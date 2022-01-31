@@ -21,7 +21,7 @@ To see the back off the app and more info about the architecture see: [back-end]
 
 This project was build using the following technologies:
 
-1.  React.js
+1.  React.js and MUI
 2.  react router
 3.  js, css, html
 4.  aws s3 storage
