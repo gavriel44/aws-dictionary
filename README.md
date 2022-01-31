@@ -25,7 +25,7 @@ This project was build using the following technologies:
 2.  react router
 3.  js, css, html
 4.  aws s3 storage
-5.  cloud formation aws service
+5.  cloud front aws service
 
 ## Use cases
 
