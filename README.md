@@ -8,16 +8,16 @@ Gavri Dictionary is an application consisting of a range of services to help you
 
 ## Table of contents
 
-1. [About the project](#motivation)
+1. [About the project](#about-the-project)
 2. [Build](#build)
-3. [Use cases](#more-than-embedded)
+3. [Use cases](#use-cases)
 
-## About the project[](#motivation)
+## About the project[](#about-the-project)
 
 This project was made as an exercise for learning cloud infrastructure in aws aka amazon web services. In this repo only the front part of the app is present.
 To see the back off the app and more info about the architecture see: [back-end](https://github.com/gavriel44/aws-dictionary-back-end/tree/develop)
 
-## Build
+## Build[](#build)
 
 This project was build using the following technologies:
 
@@ -27,7 +27,7 @@ This project was build using the following technologies:
 4.  aws s3 storage
 5.  cloud front aws service
 
-## Use cases
+## Use cases[](#use-cases)
 
 - Mobile compatible!
   the front end was designed in the mobile first metodologi.
