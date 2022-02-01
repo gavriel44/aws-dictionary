@@ -1,0 +1,42 @@
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "userId": "testId",
+    "name": "gavri"
+}
+
+###
+
+GET http://localhost:3000/word/Zalambdodont
+
+###
+
+GET http://localhost:3000/word/Zany/v
+
+###
+
+GET http://localhost:3000/partOfSpeech/n?letter=Z
+
+
+### 
+
+GET http://localhost:3000/setup
+
+### -----------------------------------------------------------
+
+
+GET https://v8pauve0t1.execute-api.us-east-1.amazonaws.com/word/Zany
+
+###
+
+GET https://v8pauve0t1.execute-api.us-east-1.amazonaws.com/word/Zany/v
+
+###
+
+GET https://v8pauve0t1.execute-api.us-east-1.amazonaws.com/partOfSpeech/n
+
+
+###
+
+GET https://v8pauve0t1.execute-api.us-east-1.amazonaws.com/setup

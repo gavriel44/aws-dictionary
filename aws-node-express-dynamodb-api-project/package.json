@@ -1,0 +1,23 @@
+{
+  "name": "aws-node-express-dynamodb-api-project",
+  "version": "1.0.0",
+  "scripts": {
+    "deploy": "serverless deploy",
+    "deploy:func": "serverless deploy function -f api",
+    "x": "serverless plugin install -n serverless-dynamodb-local",
+    "y": "serverless plugin install -n serverless-offline",
+    "dev": "serverless offline start",
+    "z": "sls dynamodb install"
+  },
+  "description": "",
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.47.0",
+    "csvtojson": "^2.0.10",
+    "express": "^4.17.1",
+    "serverless-http": "^2.7.0"
+  },
+  "devDependencies": {
+    "serverless-dynamodb-local": "^0.2.40",
+    "serverless-offline": "^8.3.1"
+  }
+}

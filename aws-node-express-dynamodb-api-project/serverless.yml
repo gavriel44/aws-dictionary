@@ -1,0 +1,73 @@
+org: gavriel44
+app: aws-node-express-dynamodb-api-project
+service: aws-node-express-dynamodb-api-project
+frameworkVersion: "2 || 3"
+
+custom:
+  tableName: "dictionary-table-${sls:stage}"
+  dynamodb:
+    start:
+      migrate: true
+    stages:
+      - dev
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  lambdaHashingVersion: "20201221"
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - dynamodb:Query
+            - dynamodb:Scan
+            - dynamodb:GetItem
+            - dynamodb:PutItem
+            - dynamodb:UpdateItem
+            - dynamodb:DeleteItem
+          Resource:
+            - Fn::GetAtt: [DictionaryTable, Arn]
+            - Fn::Join:
+                ["/", ["Fn::GetAtt": [DictionaryTable, Arn], "index", "*"]]
+  environment:
+    DICTIONARY_TABLE: ${self:custom.tableName}
+
+functions:
+  api:
+    handler: handler.handler
+    events:
+      - httpApi: "*"
+
+resources:
+  Resources:
+    DictionaryTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: word
+            AttributeType: S
+          - AttributeName: partOfSpeech
+            AttributeType: S
+          - AttributeName: firstLetter
+            AttributeType: S
+        KeySchema:
+          - AttributeName: word
+            KeyType: HASH
+          - AttributeName: partOfSpeech
+            KeyType: RANGE
+        GlobalSecondaryIndexes:
+          - IndexName: partOfSpeechIndex
+            KeySchema:
+              - AttributeName: partOfSpeech
+                KeyType: HASH
+              - AttributeName: firstLetter
+                KeyType: RANGE
+            Projection:
+              ProjectionType: "ALL"
+        BillingMode: PAY_PER_REQUEST
+        TableName: ${self:custom.tableName}
+
+plugins:
+  - serverless-dynamodb-local
+  - serverless-offline
