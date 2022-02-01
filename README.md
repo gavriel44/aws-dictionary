@@ -49,3 +49,5 @@ This project was build using the following technologies:
 - Easy to use menu
 
   ![menu component](./pic/Menu.jpg)
+  
+- Each word is a link. Try it!
