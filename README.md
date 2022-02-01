@@ -10,7 +10,7 @@ Gavri Dictionary is an application consisting of a range of services to help you
 
 1. [About the project](#about-the-project)
 2. [Build](#build)
-3. [Use cases](#use-cases)
+3. [Api](#api)
 
 ## About the project[](#about-the-project)
 
@@ -30,9 +30,7 @@ This project was build using the following technologies:
 
 ![diagram](https://docs.aws.amazon.com/whitepapers/latest/microservices-on-aws/images/image4.png)
 
-## Use cases[](#use-cases)
-
-# Api
+## Api[](#api)
 
 - GET "/word/:word" - get the definition of a word
 - GET "/word/:word/:partOfSpeech - get the word definition filter by part of speech
