@@ -1,4 +1,4 @@
-# Gavri Dictionary App
+# Gavri Dictionary App - Front
 
 link to official site via s3 and cloud front: [Gavri dictionary](https://d3iwjb8npp9uhz.cloudfront.net/)
 
