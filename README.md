@@ -1,6 +1,6 @@
 # Gavri Dictionary App
 
-link to official site via s3 and cloud front: [Gavri dictonari](https://d3iwjb8npp9uhz.cloudfront.net/)
+link to official site via s3 and cloud front: [Gavri dictionary](https://d3iwjb8npp9uhz.cloudfront.net/)
 
 ## Intro
 
@@ -14,8 +14,8 @@ Gavri Dictionary is an application consisting of a range of services to help you
 
 ## About the project[](#about-the-project)
 
-This project was made as an exercise for learning cloud infrastructure in aws aka amazon web services. In this repo only the front part of the app is present.
-To see the back off the app and more info about the architecture see: [back-end](https://github.com/gavriel44/aws-dictionary-back-end/tree/develop)
+This project was made as an exercise for learning cloud infrastructure in aws aka amazon web services. The contents of this repo include only the front part of the app.
+To see the back-end part and more info about the project architecture see: [back-end](https://github.com/gavriel44/aws-dictionary-back-end/tree/develop)
 
 ## Build[](#build)
 
