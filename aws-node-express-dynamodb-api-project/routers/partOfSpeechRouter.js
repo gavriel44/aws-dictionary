@@ -1,6 +1,5 @@
 const partOfSpeechRouter = require("express").Router();
-const { dynamoDbClient } = require("../services/dynamoDBService");
-const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const DBService = require("../services/DBService");
 
 /* 
   Returns a random word with given partOfSpeech.
@@ -17,22 +16,14 @@ const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   }
 
 */
+
 partOfSpeechRouter.get("/:part", async (req, res) => {
   const part = req.params.part;
-  const letter = req.query.letter || alphabet[Math.floor(Math.random() * 26)];
-  let params = {
-    TableName: "dictionary-table-dev",
-    IndexName: "partOfSpeechIndex",
-    KeyConditionExpression: "partOfSpeech = :part and firstLetter = :letter",
-    ExpressionAttributeValues: {
-      ":part": part,
-      ":letter": letter,
-    },
-  };
+  const letter = req.query.letter;
 
   try {
-    const data = await dynamoDbClient.query(params).promise();
-    res.json(data.Items[Math.floor(Math.random() * data.Items.length)]);
+    const word = await DBService.getWord(word, letter);
+    res.json(word);
   } catch (error) {
     console.log(error);
     res.json({ error });
