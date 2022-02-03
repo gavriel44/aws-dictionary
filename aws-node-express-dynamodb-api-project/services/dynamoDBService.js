@@ -8,4 +8,6 @@ if (IS_OFFLINE) {
 }
 const dynamoDbClient = new AWS.DynamoDB.DocumentClient(dynamoDbClientParams);
 
+const query
+
 module.exports = { dynamoDbClient };
