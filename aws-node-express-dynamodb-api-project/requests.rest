@@ -34,7 +34,11 @@ GET https://v8pauve0t1.execute-api.us-east-1.amazonaws.com/word/Zany/v
 
 ###
 
-GET https://v8pauve0t1.execute-api.us-east-1.amazonaws.com/partOfSpeech/n
+GET https://v8pauve0t1.execute-api.us-east-1.amazonaws.com/partOfSpeech/v
+
+###
+
+GET https://v8pauve0t1.execute-api.us-east-1.amazonaws.com/partOfSpeech/n?letter=N
 
 
 ###
