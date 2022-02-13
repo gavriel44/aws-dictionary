@@ -24,11 +24,11 @@ This project was build using the following technologies:
 1.  Node.js
 2.  Express.js
 3.  serverless framework
-3.  aws - s3, dynamoDb, Lambda, CloudFront
+4.  aws - s3, dynamoDb, Lambda, CloudFront
 
 ## Stracture
 
-![diagram](https://docs.aws.amazon.com/whitepapers/latest/microservices-on-aws/images/image4.png)
+![diagram](./readme-pic/dict-back.png)
 
 ## Api[](#api)
 
