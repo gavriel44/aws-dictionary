@@ -1,8 +1,9 @@
+import { Skeleton } from "@mui/material";
+import { Box } from "@mui/system";
 import axios from "axios";
 import React, { useEffect } from "react";
 import { useQuery } from "react-query";
 import { useOutletContext, useParams } from "react-router-dom";
-import { useDictionaryFetch } from "../hooks/useDictionaryFetch";
 import { capitalizeFirstLetter } from "../utils/help";
 import WordDefinition from "./WordDefinition";
 
@@ -36,9 +37,29 @@ export default function WordBlock() {
   }, [currentWord, setSearchHistory, wordDefinition]);
 
   if (isLoading) {
-    return <div>Loading</div>;
+    const skeletonLoaderArray = Array(5).fill(
+      <Skeleton
+        sx={{ backgroundColor: "#505050", margin: "10px", height: "30px" }}
+      />
+    );
+    skeletonLoaderArray[skeletonLoaderArray.length - 1] = (
+      <Skeleton
+        sx={{
+          backgroundColor: "#505050",
+          margin: "10px",
+          height: "30px",
+          width: "30%",
+        }}
+      />
+    );
+    return (
+      <Box sx={{ width: "40%", margin: "auto", marginTop: "80px" }}>
+        {skeletonLoaderArray}
+      </Box>
+    );
   }
-  if (currentWord !== []) {
+  console.log(wordDefinition);
+  if (wordDefinition !== []) {
     return (
       <div className="word-block">
         <h1>{currentWord}</h1>
