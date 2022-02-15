@@ -39,7 +39,7 @@ describe("word router", () => {
   describe("GET /word/:word/:partOfSpeech - get word with a specific partOfSpeech", () => {
     it("get a noun", async () => {
       const response = await server.get("/word/Dog/n");
-      console.log(response.body.partOfSpeech);
+      //   console.log(response.body.partOfSpeech);
       expect(response.body.partOfSpeech).toBe("n");
     });
 
@@ -48,9 +48,9 @@ describe("word router", () => {
       expect(response.body.partOfSpeech).toBe("v");
     });
   });
-});
 
-// .expect(200)
-//       .expect(function (res) {
-//         res.body[0].word = "Theword";
-//       });
+  it("GET /word/:word", async () => {
+    const response = await server.get("/word/Book");
+    expect(response.body).toHaveLength(2);
+  });
+});
