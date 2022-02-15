@@ -85,6 +85,7 @@ export default function Home() {
             onSubmit={handleSubmit}
           >
             <TextField
+              id="bottom-search-input"
               label="Filled secondary"
               color="error"
               focused

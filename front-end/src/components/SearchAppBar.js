@@ -170,10 +170,16 @@ export default function SearchAppBar() {
               justifyContent: "flex-start",
             }}
           >
-            <ColorButton onClick={handleColorButtonNavigate("/")}>
+            <ColorButton
+              id="home-appBar-button"
+              onClick={handleColorButtonNavigate("/")}
+            >
               Home
             </ColorButton>
-            <ColorButton onClick={handleColorButtonNavigate("/words")}>
+            <ColorButton
+              id="history-appBar-button"
+              onClick={handleColorButtonNavigate("/words")}
+            >
               Search history
             </ColorButton>
             <ColorButton>Surprise me!</ColorButton>
@@ -189,6 +195,7 @@ export default function SearchAppBar() {
               inputProps={{
                 "aria-label": "search",
                 value: searchInputState,
+                id: "appBar-search-input",
                 onChange: (e) => {
                   // console.log("e");
                   setSearchInputState(e.target.value);
