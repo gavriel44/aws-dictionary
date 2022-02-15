@@ -1,4 +1,5 @@
 import { Skeleton } from "@mui/material";
+import skeletonLoaderArray from "./WordBlockSkeleton";
 import { Box } from "@mui/system";
 import axios from "axios";
 import React, { useEffect } from "react";
@@ -37,21 +38,6 @@ export default function WordBlock() {
   }, [currentWord, setSearchHistory, wordDefinition]);
 
   if (isLoading) {
-    const skeletonLoaderArray = Array(5).fill(
-      <Skeleton
-        sx={{ backgroundColor: "#505050", margin: "10px", height: "30px" }}
-      />
-    );
-    skeletonLoaderArray[skeletonLoaderArray.length - 1] = (
-      <Skeleton
-        sx={{
-          backgroundColor: "#505050",
-          margin: "10px",
-          height: "30px",
-          width: "30%",
-        }}
-      />
-    );
     return (
       <Box sx={{ width: "40%", margin: "auto", marginTop: "80px" }}>
         {skeletonLoaderArray}
