@@ -11,6 +11,10 @@ app.use(express.json());
 app.use("/word", wordRouter);
 app.use("/partOfSpeech", partOfSpeechRouter);
 
+app.use("/", (req, res) => {
+  res.send("hello");
+});
+
 app.use((req, res, next) => {
   return res.status(404).json({
     error: "Not Found sorry! and go",

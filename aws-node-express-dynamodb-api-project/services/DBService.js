@@ -22,6 +22,16 @@ async function getWord(word) {
   return data.Items;
 }
 
+async function postWord(word) {
+  const params = {
+    TableName: "dictionary-table-dev",
+    Item: word,
+  };
+  const data = await dynamoDbClient.put(params).promise();
+
+  return data.ConsumedCapacity;
+}
+
 async function getWordWithPartOfSpeech(word, partOfSpeech) {
   const params = {
     TableName: "dictionary-table-dev",
@@ -53,9 +63,37 @@ async function getRandomWord(
   return data.Items[Math.floor(Math.random() * data.Items.length)];
 }
 
+// ------------------ for testing purposes --------
+
+// ATTENTION! up to minimum amount only.
+async function batchWrite(words, removeItems = false) {
+  const params = {
+    RequestItems: {
+      "dictionary-table-dev": words.map((wordJson) => {
+        if (removeItems) {
+          return {
+            DeleteRequest: {
+              Key: { word: wordJson.word, partOfSpeech: wordJson.partOfSpeech },
+            },
+          };
+        }
+        return {
+          PutRequest: {
+            Item: wordJson,
+          },
+        };
+      }),
+    },
+  };
+
+  await dynamoDbClient.batchWrite(params).promise();
+}
+
 module.exports = {
   dynamoDbClient,
   getWord,
   getWordWithPartOfSpeech,
   getRandomWord,
+  postWord,
+  batchWrite,
 };

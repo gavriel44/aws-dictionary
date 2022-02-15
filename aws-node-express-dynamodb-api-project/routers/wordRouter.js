@@ -20,11 +20,22 @@ wordRouter.get("/:word", async (req, res) => {
   const word = req.params.word;
 
   try {
-    const word = await DBService.getWord(word);
-    res.json(word);
+    const responseWord = await DBService.getWord(word);
+    res.json(responseWord);
   } catch (error) {
     console.log(error);
     res.json({ error });
+  }
+});
+
+wordRouter.post("/", async (req, res) => {
+  const body = req.body;
+
+  try {
+    const consumedCapacity = await DBService.postWord(body);
+    res.json({ consumedCapacity, body });
+  } catch (error) {
+    console.log(error);
   }
 });
 
@@ -45,8 +56,11 @@ wordRouter.get("/:word/:partOfSpeech", async (req, res) => {
   const partOfSpeech = req.params.partOfSpeech;
 
   try {
-    word = await DBService.getWordWithPartOfSpeech(word, partOfSpeech);
-    res.json(word);
+    const responseWord = await DBService.getWordWithPartOfSpeech(
+      word,
+      partOfSpeech
+    );
+    res.json(responseWord);
   } catch (error) {
     console.log(error);
     res.json({ error });

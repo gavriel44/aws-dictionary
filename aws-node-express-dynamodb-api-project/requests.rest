@@ -1,18 +1,20 @@
-POST http://localhost:3000/users
+POST http://localhost:3000/word
 Content-Type: application/json
 
 {
-    "userId": "testId",
-    "name": "gavri"
+      "partOfSpeech": "n",
+      "definition": ["gavri def"],
+      "word": "TheWord",
+      "firstLetter": "theFirstLetter"
 }
 
 ###
 
-GET http://localhost:3000/word/Zalambdodont
+GET http://localhost:3000/word/TheWord
 
 ###
 
-GET http://localhost:3000/word/Zany/v
+GET http://localhost:3000/word/Dog/n
 
 ###
 
@@ -23,10 +25,15 @@ GET http://localhost:3000/partOfSpeech/n?letter=Z
 
 GET http://localhost:3000/setup
 
+###
+
+GET http://localhost:3000/
+
+
 ### -----------------------------------------------------------
 
 
-GET https://v8pauve0t1.execute-api.us-east-1.amazonaws.com/word/Dog
+GET https://v8pauve0t1.execute-api.us-east-1.amazonaws.com/word/Book
 
 ###
 

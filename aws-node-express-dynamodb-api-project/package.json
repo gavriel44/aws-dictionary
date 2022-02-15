@@ -7,7 +7,8 @@
     "x": "serverless plugin install -n serverless-dynamodb-local",
     "y": "serverless plugin install -n serverless-offline",
     "dev": "serverless offline start",
-    "z": "sls dynamodb install"
+    "z": "sls dynamodb install",
+    "test": "cross-env IS_OFFLINE=true jest --verbose --runInBand"
   },
   "description": "",
   "dependencies": {
@@ -18,7 +19,10 @@
     "serverless-http": "^2.7.0"
   },
   "devDependencies": {
+    "cross-env": "^7.0.3",
+    "jest": "^27.5.1",
     "serverless-dynamodb-local": "^0.2.40",
-    "serverless-offline": "^8.3.1"
+    "serverless-offline": "^8.3.1",
+    "supertest": "^6.2.2"
   }
 }
