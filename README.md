@@ -130,3 +130,12 @@ This project was build using the following technologies:
 - Each word is a link. Try it!
 
 ## Road map[](#road-map)
+
+Here I state what are my next goals.
+
+By order of importance:
+
+- finish word upload system using cdk
+- integrate the system in the front end
+- complete 100% test coverage
+- convert all code base to TypeScript
