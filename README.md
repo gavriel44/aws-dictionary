@@ -14,11 +14,12 @@ Microservices Architecture mindset. Fill free to check out the project [road map
 1. [Back-end](#back-end)
 2. [Services and Build](#services)
 3. [Structure](#structure)
-4. [Api](#api)
-5. [Front-end](#front-end)
-6. [Build](#build-front)
-7. [Use cases](#use-cases)
-8. [Road map](#road-map)
+4. [Tests](#tests)
+5. [Api](#api)
+6. [Front-end](#front-end)
+7. [Build](#build-front)
+8. [Use cases](#use-cases)
+9. [Road map](#road-map)
 
 <!-- ## About the project[](#about-the-project)
 
@@ -48,13 +49,41 @@ This is the main back-end api. It is built using the [Serverless Framework](http
 The front-end part of the app is served by an S3 bucket.
 In order to get the added benefit of using SSL and https and more I added the CloudFront service. There are more benefits for using that method witch i wont mention here.
 
-## Structure
+## Structure[](#structure)
 
 ![diagram](./readme-pic/dict-back.png)
 
-## Tests
+## Tests[](#tests)
 
-For testing I opt to use jest and supertest.
+For integration testing in the back I use jest and supertest.
+I opt to use the Cypress library for my e2e testing.
+
+Back: to run enter: `npm run dev` and after the serverless offline is initialized run `npm test`
+
+API tests
+
+- add and get word from db
+  - √ add word
+  - √ get word
+  - √ word are returned as json
+- word router
+  - √ GET /word/:word
+- GET /word/:word/:partOfSpeech - get word with a specific partOfSpeech
+  - √ get a noun
+  - √ get a verb
+
+Front: to run the tests you can enter: `npm run cy:run` - for headless or `npx cypress open` - for full debug mode.
+
+Word search
+
+- √ using appBar search bar
+- √ using bottom of page search bar
+- √ traversing throw words links
+
+AppBar buttons test
+
+- √ home button returns home
+- √ history button goes to history
 
 ## Api[](#api)
 
@@ -74,24 +103,6 @@ This project was build using the following technologies:
 4.  js, css, html
 5.  aws s3 storage
 6.  cloud front aws service
-
-## Tests[](#test-front)
-
-I opt to use the Cypress library for my e2e testing.
-
-To run the tests you can run: `npm run cy:run` - for headless or `npx cypress open` - for full debug mode
-Tests at the moment:
-
-Word search
-
-- √ using appBar search bar
-- √ using bottom of page search bar
-- √ traversing throw words links
-
-AppBar buttons test
-
-- √ home button returns home (2346ms)
-- √ history button goes to history (4081ms)
 
 ## Use cases[](#use-cases)
 
