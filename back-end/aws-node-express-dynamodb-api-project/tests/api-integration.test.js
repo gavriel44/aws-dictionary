@@ -12,20 +12,19 @@ describe("API tests", () => {
       expect(response.body.body.word).toBe(mockData[0].word);
     });
 
-    it("get word", () => {
-      server
-        .get("/word/Theword")
-        .expect(200)
-        .expect((res) => {
-          assert(res.body[0].word, "Theword");
-        });
+    it("get word", async () => {
+      const response = await server.get("/word/TheWord");
+
+      expect(response.status).toBe(200);
+      console.log(response.body);
+      expect(response.body[0].word).toBe(mockData[0].word);
     });
 
-    it("word are returned as json", () => {
-      server
-        .get("/word/Theword")
-        .expect(200)
-        .expect("Content-Type", /application\/json/);
+    it("word are returned as json", async () => {
+      const response = await server.get("/word/TheWord");
+
+      expect(response.status).toBe(200);
+      expect(response.header["content-type"]).toMatch(/application\/json/);
     });
   });
 });
