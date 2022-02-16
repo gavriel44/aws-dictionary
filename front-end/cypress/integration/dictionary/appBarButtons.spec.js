@@ -13,8 +13,11 @@ describe("AppBar buttons test", () => {
   });
 
   it("history button goes to history", () => {
+    cy.contains("cat");
+
     cy.get("#history-appBar-button").click();
 
     cy.verifyPath("/words");
+    cy.contains("cat");
   });
 });
