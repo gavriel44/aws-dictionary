@@ -58,6 +58,8 @@ In order to get the added benefit of using SSL and https and more I added the Cl
 For integration testing in the back I use jest and supertest.
 I opt to use the Cypress library for my e2e testing.
 
+<b>For CI testing proccess look /.github/workflows/cypress-front-test.yml</b>
+
 Back: to run enter: `npm run dev` and after the serverless offline is initialized run `npm test`
 
 API tests
