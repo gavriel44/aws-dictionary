@@ -30,3 +30,5 @@ jobs:
           working-directory: ./front-end
           # Path of project to run
           project: ./front-end
+          # Whether or not to use headless mode
+          headless: true
