@@ -64,27 +64,27 @@ Back: to run enter: `npm run dev` and after the serverless offline is initialize
 API tests
 
 - add and get word from db
-  - √ add word
-  - √ get word
-  - √ word are returned as json
+  - :white_check_mark: add word
+  - :white_check_mark: get word
+  - :white_check_mark: word are returned as json
 - word router
-  - √ GET /word/:word
+  - :white_check_mark: GET /word/:word
 - GET /word/:word/:partOfSpeech - get word with a specific partOfSpeech
-  - √ get a noun
-  - √ get a verb
+  - :white_check_mark: get a noun
+  - :white_check_mark: get a verb
 
 Front: to run the tests you can enter: `npm run cy:run` - for headless or `npx cypress open` - for full debug mode.
 
 Word search
 
-- √ using appBar search bar
-- √ using bottom of page search bar
-- √ traversing throw words links
+- :white_check_mark: using appBar search bar
+- :white_check_mark: using bottom of page search bar
+- :white_check_mark: traversing throw words links
 
 AppBar buttons test
 
-- √ home button returns home
-- √ history button goes to history
+- :white_check_mark: home button returns home
+- :white_check_mark: history button goes to history
 
 ## CI/CD - Github Actions[](#ci/cd)
 
