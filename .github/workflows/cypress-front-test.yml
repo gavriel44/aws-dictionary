@@ -5,9 +5,9 @@ name: CI
 # Controls when the workflow will run
 on: [push, workflow_dispatch]
 
-defaults:
-  run:
-    working-directory: ./front-end
+# defaults:
+#   run:
+#     working-directory: ./front-end
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -26,3 +26,7 @@ jobs:
         with:
           build: npm run build
           start: npm start
+          # Working directory containing Cypress folder
+          working-directory: ./front-end
+          # Path of project to run
+          project: ./front-end
