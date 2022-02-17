@@ -1,4 +1,4 @@
-# Gavri Dictionary App
+# Gavri Dictionary App [![CI](https://github.com/gavriel44/aws-dictionary/actions/workflows/cypress-front-test.yml/badge.svg?branch=main&event=push)](https://github.com/gavriel44/aws-dictionary/actions/workflows/cypress-front-test.yml)
 
 link to official site via s3 and cloud front: [Gavri dictionary](https://d3iwjb8npp9uhz.cloudfront.net/)
 
