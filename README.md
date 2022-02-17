@@ -150,3 +150,7 @@ By order of importance:
 - integrate the system in the front end
 - complete 100% test coverage
 - convert all code base to TypeScript
+
+## License
+
+:copyright: Gavrile Frant
