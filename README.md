@@ -15,11 +15,12 @@ Microservices Architecture mindset. Feel free to check out the project [road map
 2. [Services and Build](#services)
 3. [Structure](#structure)
 4. [Tests](#tests)
-5. [Api](#api)
-6. [Front-end](#front-end)
-7. [Build](#build-front)
-8. [Use cases](#use-cases)
-9. [Road map](#road-map)
+5. [CI/CDp - Github Actions](#ci/cd)
+6. [Api](#api)
+7. [Front-end](#front-end)
+8. [Build](#build-front)
+9. [Use cases](#use-cases)
+10. [Road map](#road-map)
 
 <!-- ## About the project[](#about-the-project)
 
@@ -58,8 +59,6 @@ In order to get the added benefit of using SSL and https and more I added the Cl
 For integration testing in the back I use jest and supertest.
 I opt to use the Cypress library for my e2e testing.
 
-<b>For CI testing proccess look /.github/workflows/cypress-front-test.yml</b>
-
 Back: to run enter: `npm run dev` and after the serverless offline is initialized run `npm test`
 
 API tests
@@ -87,13 +86,27 @@ AppBar buttons test
 - √ home button returns home
 - √ history button goes to history
 
+## CI/CD - Github Actions[](#ci/cd)
+
+At the moment I have set up a pipeline for the front-end
+
+### CI - Tests
+
+Every push or pull request triggers a github action workflow which runs the cypress e2e tests. <b>A pull request that did not pass the test will not be able to be merged into the main branch</b> and trigger the push CD workflow. see [Managing a branch protection rule](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/managing-a-branch-protection-rule)
+
+### CD - Deployment
+
+<b>Only a push to the main branch</b> will trigger a github workflow which builds and deploys the react front build to the S3 bucket. <b>The workflow also invalidates the CloudFront distribution</b> in order to make cloud front to re fetch the latest version of the build.
+
 ## Api[](#api)
 
-- GET "/word/:word" - get the definition of a word
-- GET "/word/:word/:partOfSpeech - get the word definition filter by part of speech
-- GET "partOfSpeech/:part - get random word withe a spacific part of speech
+- GET /word/:word - get the definition of a word
+- GET /word/:word/:partOfSpeech - get the word definition filter by part of speech
+- GET partOfSpeech/:part - get random word withe a spacific part of speech
 
 # Front-end[](#front-end)
+
+![home page photo](./readme-pic/Home.jpg)
 
 ## Build[](#build)
 
@@ -116,12 +129,8 @@ This project was build using the following technologies:
 
   1. use the upper right corner search bar input
   2. use the search input at the bottom of the page
-
-  ![home page photo](./readme-pic/Home.jpg)
-
   3. press Enter, and off you go!
-
-  ![a search output](./readme-pic/Book.jpg)
+  <!-- ![a search output](./readme-pic/Book.jpg) -->
 
 - Search history
   1. press the search history button at the app bar
