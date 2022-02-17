@@ -7,7 +7,7 @@ link to official site via s3 and cloud front: [Gavri dictionary](https://d3iwjb8
 <!-- Gavri Dictionary is an application consisting of a range of services to help you, the user, use an online easy to use and reliable dictionary. Much like a regular old paper dictionary, Gavri dictionary can be used to look up words and there minings, but it can do much more! -->
 
 This project is a cloud based dictionary application based on the AWS Cloud. The application consists of multiple micro services working together in since, with the
-Microservices Architecture mindset. Fill free to check out the project [road map](#road-map) at the bottom of the page, where you'll find project future goals.
+Microservices Architecture mindset. Feel free to check out the project [road map](#road-map) at the bottom of the page, where you'll find project future goals.
 
 ## Table of contents
 
@@ -47,7 +47,7 @@ This is the main back-end api. It is built using the [Serverless Framework](http
 ### Cloud-Front
 
 The front-end part of the app is served by an S3 bucket.
-In order to get the added benefit of using SSL and https and more I added the CloudFront service. There are more benefits for using that method witch i wont mention here.
+In order to get the added benefit of using SSL and https and more I added the CloudFront service. There are more benefits for using that method which i won't mention here.
 
 ## Structure[](#structure)
 
