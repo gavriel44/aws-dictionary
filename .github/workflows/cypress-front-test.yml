@@ -9,6 +9,9 @@ on: [push, workflow_dispatch]
 #   run:
 #     working-directory: ./front-end
 
+env:
+  NODE_ENV: development
+
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -31,3 +34,5 @@ jobs:
 #           project: ./front-end
           # Whether or not to use headless mode
           headless: true
+          # Whether or not to run install
+          install: true
