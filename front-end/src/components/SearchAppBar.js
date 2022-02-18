@@ -12,6 +12,7 @@ import { Button, Menu, MenuItem } from "@mui/material";
 import { purple } from "@mui/material/colors";
 import { useNavigate } from "react-router-dom";
 import { lettersOnly } from "../utils/help";
+import { useQueryClient } from "react-query";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -76,6 +77,7 @@ export default function SearchAppBar() {
   const open = Boolean(anchorEl);
   const [searchInputState, setSearchInputState] = React.useState("");
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -89,6 +91,13 @@ export default function SearchAppBar() {
       handleClose();
       navigate(link);
     };
+  };
+
+  const handleSurpriseClick = () => {
+    console.log("in surprise");
+    // this query is for invalidating and making react query not to take the cache
+    // queryClient.invalidateQueries("rand-wordData");
+    navigate("words/rand-word");
   };
 
   const handleColorButtonNavigate = (link) => {
@@ -182,7 +191,12 @@ export default function SearchAppBar() {
             >
               Search history
             </ColorButton>
-            <ColorButton>Surprise me!</ColorButton>
+            <ColorButton
+              id="surprise-appBar-button"
+              onClick={handleSurpriseClick}
+            >
+              Surprise me!
+            </ColorButton>
           </Box>
           <Search>
             <SearchIconWrapper>
