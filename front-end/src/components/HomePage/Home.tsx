@@ -10,7 +10,11 @@ import { styled } from "@mui/material/styles";
 export default function Home(): React.ReactElement {
   const [inputState, setInputState] = useState("");
   const navigate = useNavigate();
-  const handleSubmit: React.MouseEventHandler<HTMLButtonElement> = (e) => {
+  const handleSubmit: React.MouseEventHandler<HTMLButtonElement> = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    console.log("insub");
+
     e.preventDefault();
     navigate(`words/${lettersOnly(inputState)}`);
   };
@@ -79,7 +83,12 @@ export default function Home(): React.ReactElement {
           >
             Go ahead and search for a word:
           </div>
-          <Box component="form" sx={{ display: "inline-flex" }}>
+          <Box
+            component="form"
+            // @ts-ignore
+            onSubmit={handleSubmit}
+            sx={{ display: "inline-flex" }}
+          >
             <TextField
               id="bottom-search-input"
               label="Filled secondary"
@@ -87,7 +96,7 @@ export default function Home(): React.ReactElement {
               focused
               sx={{ input: { color: "white" } }}
               value={inputState}
-              onChange={(e) => setInputState(e.target.value)}
+              onChange={(e) => setInputState(e.currentTarget.value)}
             />
 
             <ColorButton onClick={handleSubmit}>Search</ColorButton>
