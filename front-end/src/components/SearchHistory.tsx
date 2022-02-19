@@ -1,11 +1,13 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import { useOutletContext } from "react-router-dom";
+import { OutletContext } from "../App";
+import { Word } from "../types/SearchHistory";
 import WordDefinition from "./WordDefinition";
 
 export default function SearchHistory() {
-  const [searchHistory] = useOutletContext();
+  const [searchHistory] = useOutletContext<OutletContext>();
   console.log(searchHistory);
-  const arr = [];
+  const arr: ReactElement[] = [];
 
   const values = Object.values(searchHistory);
 
@@ -18,8 +20,8 @@ export default function SearchHistory() {
   values.forEach((word) => {
     if (!word) return;
     word.forEach((definition) => {
-      arr.push(
-        <WordDefinition key={definition.definition} word={definition} title />
+      return arr.push(
+        <WordDefinition key={definition.definition[0]} word={definition} />
       );
     });
   });

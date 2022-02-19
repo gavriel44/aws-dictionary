@@ -71,22 +71,22 @@ const ColorButton = styled(Button)(({ theme }) => ({
   marginLeft: "20px",
   width: "200px",
 }));
-
-export default function SearchAppBar() {
+export default function SearchAppBar(): React.ReactElement {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const [searchInputState, setSearchInputState] = React.useState("");
   const navigate = useNavigate();
   const queryClient = useQueryClient();
 
-  const handleClick = (event) => {
+  const handleClick: React.MouseEventHandler<HTMLButtonElement> = (event) => {
+    // @ts-ignore
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
   };
 
-  const handleMenuNavigate = (link) => {
+  const handleMenuNavigate = (link: string) => {
     return () => {
       handleClose();
       navigate(link);
@@ -100,18 +100,19 @@ export default function SearchAppBar() {
     navigate("words/rand-word");
   };
 
-  const handleColorButtonNavigate = (link) => {
+  const handleColorButtonNavigate = (link: string) => {
     return () => {
       navigate(link);
     };
   };
 
-  const inputRef = React.useRef(null);
+  const inputRef = React.useRef<HTMLInputElement>(null);
 
   React.useEffect(() => {
-    const handleEnterKeyUp = (e) => {
+    const handleEnterKeyUp = (e: KeyboardEvent) => {
       // console.log("test", inputRef.current, "active", document.activeElement);
       // console.log("input: ", searchInputState);
+      if (!inputRef.current) return;
       if (
         document.activeElement === inputRef.current &&
         e.key === "Enter" &&
@@ -169,8 +170,6 @@ export default function SearchAppBar() {
             GAVRI D
           </Typography>
           <Box
-            variant="h6"
-            noWrap
             component="div"
             sx={{
               flexGrow: 1,
@@ -211,8 +210,7 @@ export default function SearchAppBar() {
                 value: searchInputState,
                 id: "appBar-search-input",
                 onChange: (e) => {
-                  // console.log("e");
-                  setSearchInputState(e.target.value);
+                  setSearchInputState(e.currentTarget.value);
                 },
               }}
               // onChange={(e) => {

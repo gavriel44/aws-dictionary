@@ -1,5 +1,5 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
-import React, { useState } from "react";
+import React, { ReactElement, useState } from "react";
 // import Image from "./test4.jpg";
 import "./homeStyle.css";
 import { useNavigate } from "react-router-dom";
@@ -7,10 +7,10 @@ import { lettersOnly } from "../../utils/help";
 import { purple } from "@mui/material/colors";
 import { styled } from "@mui/material/styles";
 
-export default function Home() {
+export default function Home(): React.ReactElement {
   const [inputState, setInputState] = useState("");
   const navigate = useNavigate();
-  const handleSubmit = (e) => {
+  const handleSubmit: React.MouseEventHandler<HTMLButtonElement> = (e) => {
     e.preventDefault();
     navigate(`words/${lettersOnly(inputState)}`);
   };
@@ -79,11 +79,7 @@ export default function Home() {
           >
             Go ahead and search for a word:
           </div>
-          <Box
-            component="form"
-            sx={{ display: "inline-flex" }}
-            onSubmit={handleSubmit}
-          >
+          <Box component="form" sx={{ display: "inline-flex" }}>
             <TextField
               id="bottom-search-input"
               label="Filled secondary"

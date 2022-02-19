@@ -1,5 +1,6 @@
 import { render } from "react-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import App from "./App";
 import Home from "./components/HomePage/Home";
 import SearchHistory from "./components/SearchHistory";
@@ -10,7 +11,7 @@ import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import "./index.css";
-// import your route components too
+import React from "react";
 
 render(
   <BrowserRouter>

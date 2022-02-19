@@ -1,21 +1,30 @@
 import { Skeleton, Typography } from "@mui/material";
 import skeletonLoaderArray from "./WordBlockSkeleton";
 import { Box } from "@mui/system";
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import axios, { Axios, AxiosError } from "axios";
+import React, { ReactElement, useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import { useOutletContext, useParams } from "react-router-dom";
 import { capitalizeFirstLetter } from "../utils/help";
 import WordDefinition from "./WordDefinition";
+import {
+  isWordDefinition,
+  IWordDefinition,
+  SearchHistory,
+  Word,
+} from "../types/SearchHistory";
+import { OutletContext } from "../App";
 
-export default function WordBlock() {
+export default function WordBlock(): ReactElement {
   // eslint-disable-next-line no-unused-vars
-  const [searchHistory, setSearchHistory] = useOutletContext();
-  const { word: currentWord } = useParams();
+  const [searchHistory, setSearchHistory] = useOutletContext<OutletContext>();
+  const { word: currentWord } = useParams<string>();
   const isSurpriseWord = currentWord === "rand-word";
   const [randomPart, setRandomPart] = useState("n");
 
   const baseUrl = "https://v8pauve0t1.execute-api.us-east-1.amazonaws.com";
+
+  if (!currentWord) return <>un error accrued</>;
 
   const capitalizedWord = capitalizeFirstLetter(currentWord);
 
@@ -36,7 +45,7 @@ export default function WordBlock() {
     isLoading,
     error,
     data: wordDefinition,
-  } = useQuery(
+  } = useQuery<IWordDefinition, AxiosError>(
     `${currentWord}Data`,
     () =>
       axios.get(searchUrl).then((res) => {
@@ -46,17 +55,19 @@ export default function WordBlock() {
   );
 
   useEffect(() => {
-    const word = currentWord[0].word;
-    setSearchHistory((previousHistory) => {
-      return {
+    if (!isWordDefinition(wordDefinition)) return;
+    const word = wordDefinition[0].word;
+    setSearchHistory((previousHistory: SearchHistory) => {
+      const x: SearchHistory = {
         ...previousHistory,
         [word]: wordDefinition,
       };
+      return x;
     });
   }, [currentWord, setSearchHistory, wordDefinition]);
 
   if (error) {
-    const errorCode = error.response.status;
+    const errorCode = error.response?.status || 500;
     return (
       <div className="word-block" style={{ color: "white" }}>
         <Typography variant="h2">Oops! {errorCode}</Typography>
@@ -77,14 +88,14 @@ export default function WordBlock() {
     );
   }
   console.log(wordDefinition);
-  if (wordDefinition.length !== 0) {
+  if (isWordDefinition(wordDefinition)) {
     return (
       <div className="word-block">
         <h1>{wordDefinition[0].word}</h1>
         {wordDefinition.map((partOfSpeechDefinition) => {
           return (
             <WordDefinition
-              key={partOfSpeechDefinition.definition}
+              key={partOfSpeechDefinition.definition[0]}
               word={partOfSpeechDefinition}
             />
           );
