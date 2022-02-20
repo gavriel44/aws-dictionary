@@ -20,7 +20,7 @@ export default function WordBlock(): ReactElement {
   const [searchHistory, setSearchHistory] = useOutletContext<OutletContext>();
   const { word: currentWord } = useParams<string>();
   const isSurpriseWord = currentWord === "rand-word";
-  const [randomPart, setRandomPart] = useState("n");
+  // const [randomPart, setRandomPart] = useState("n");
 
   const baseUrl = "https://v8pauve0t1.execute-api.us-east-1.amazonaws.com";
 
@@ -30,29 +30,39 @@ export default function WordBlock(): ReactElement {
 
   let searchUrl = `${baseUrl}/word/${capitalizedWord}`;
   if (isSurpriseWord) {
-    console.log("in comp");
-    searchUrl = baseUrl + "/partOfSpeech" + "/" + randomPart;
+    // console.log("in comp");
+    searchUrl = baseUrl + "/partOfSpeech" + "/" + "n";
   }
 
-  useEffect(() => {
-    return () => {
-      console.log("in effect");
-      setRandomPart(Math.random() < 0.5 ? "n" : "v");
-    };
-  }, []);
+  // useEffect(() => {
+  //   return () => {
+  //     console.log("in effect");
+  //     setRandomPart(Math.random() < 0.5 ? "n" : "v");
+  //   };
+  // }, []);
+
+  const fetchData = async () => {
+    const res = await axios.get(searchUrl);
+    console.log(res.data);
+
+    return [].concat(res.data);
+  };
 
   const {
     isLoading,
     error,
     data: wordDefinition,
-  } = useQuery<IWordDefinition, AxiosError>(
-    `${currentWord}Data`,
-    () =>
-      axios.get(searchUrl).then((res) => {
-        return [].concat(res.data);
-      }),
-    { keepPreviousData: true }
-  );
+    refetch,
+  } = useQuery<IWordDefinition, AxiosError>(`${currentWord}Data`, fetchData, {
+    refetchOnWindowFocus: false,
+  });
+
+  useEffect(() => {
+    // if (isSurpriseWord) {
+    //   refetch();
+    // }
+    console.log("in effect");
+  });
 
   useEffect(() => {
     if (!isWordDefinition(wordDefinition)) return;

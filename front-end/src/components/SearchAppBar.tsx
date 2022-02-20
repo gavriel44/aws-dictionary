@@ -96,7 +96,7 @@ export default function SearchAppBar(): React.ReactElement {
   const handleSurpriseClick = () => {
     console.log("in surprise");
     // this query is for invalidating and making react query not to take the cache
-    // queryClient.invalidateQueries("rand-wordData");
+    queryClient.invalidateQueries("rand-wordData");
     navigate("words/rand-word");
   };
 
