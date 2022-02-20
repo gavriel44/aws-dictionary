@@ -1,11 +1,26 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import { useNavigate } from "react-router-dom";
+import { Word } from "../types/SearchHistory";
 import { lettersOnly } from "../utils/help";
 
-export default function WordDefinition({ word, title }) {
+interface Props {
+  word: Word;
+}
+
+const partOfSpeechDict = {
+  n: "noun",
+  v: "verb",
+  p: "pronoun",
+  adj: "adjective",
+  adv: "adverb",
+  c: "conjunction",
+  i: "interjection",
+};
+
+export default function WordDefinition({ word }: Props): ReactElement {
   const navigate = useNavigate();
-  const handleWordClick = (e) => {
-    const word = lettersOnly(e.target.innerText);
+  const handleWordClick: React.MouseEventHandler<HTMLSpanElement> = (e) => {
+    const word = lettersOnly(e.currentTarget.innerText);
     navigate(`../${word}`);
   };
   // let wordClass;
@@ -14,8 +29,8 @@ export default function WordDefinition({ word, title }) {
   // }
   return (
     <div className={`${word.partOfSpeech} word-definition`}>
-      {title ? <h3>{word.word}</h3> : null}
-      {word.partOfSpeech !== "null" ? <h3>As a {word.partOfSpeech}</h3> : null}
+      {/* {title ? <h3>{word.word}</h3> : null} */}
+      <h3>As a {partOfSpeechDict[word.partOfSpeech]}</h3>
       {word.definition.map((definition) => {
         return (
           <p key={definition}>

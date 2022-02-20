@@ -1,16 +1,19 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
-import React, { useState } from "react";
-// import Image from "./test4.jpg";
+import React, { ReactElement, useState } from "react";
 import "./homeStyle.css";
 import { useNavigate } from "react-router-dom";
 import { lettersOnly } from "../../utils/help";
 import { purple } from "@mui/material/colors";
 import { styled } from "@mui/material/styles";
 
-export default function Home() {
+export default function Home(): React.ReactElement {
   const [inputState, setInputState] = useState("");
   const navigate = useNavigate();
-  const handleSubmit = (e) => {
+  const handleSubmit: React.MouseEventHandler<HTMLButtonElement> = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    console.log("insub");
+
     e.preventDefault();
     navigate(`words/${lettersOnly(inputState)}`);
   };
@@ -81,8 +84,9 @@ export default function Home() {
           </div>
           <Box
             component="form"
-            sx={{ display: "inline-flex" }}
+            // @ts-ignore
             onSubmit={handleSubmit}
+            sx={{ display: "inline-flex" }}
           >
             <TextField
               id="bottom-search-input"
@@ -91,7 +95,7 @@ export default function Home() {
               focused
               sx={{ input: { color: "white" } }}
               value={inputState}
-              onChange={(e) => setInputState(e.target.value)}
+              onChange={(e) => setInputState(e.currentTarget.value)}
             />
 
             <ColorButton onClick={handleSubmit}>Search</ColorButton>

@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { capitalizeFirstLetter } from "../utils/help";
 
+// this is an outDated hook used before migrating to react query
 export function useDictionaryFetch(word) {
   const [wordDefinition, setWordDefinition] = useState([{ word: "test" }]);
   const [isLoading, setIsLoading] = useState(true);

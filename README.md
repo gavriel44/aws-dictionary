@@ -133,10 +133,10 @@ This project was build using the following technologies:
   <!-- ![a search output](./readme-pic/Book.jpg) -->
 
 - Search history
-  1. press the search history button at the app bar
-- Easy to use menu
 
-  ![menu component](./readme-pic/Menu.jpg)
+  1. press the search history button at the app bar
+
+  <!-- ![menu component](./readme-pic/Menu.jpg) -->
 
 - Each word is a link. Try it!
 
