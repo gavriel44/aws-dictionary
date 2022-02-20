@@ -7,6 +7,16 @@ interface Props {
   word: Word;
 }
 
+const partOfSpeechDict = {
+  n: "noun",
+  v: "verb",
+  p: "pronoun",
+  adj: "adjective",
+  adv: "adverb",
+  c: "conjunction",
+  i: "interjection",
+};
+
 export default function WordDefinition({ word }: Props): ReactElement {
   const navigate = useNavigate();
   const handleWordClick: React.MouseEventHandler<HTMLSpanElement> = (e) => {
@@ -20,6 +30,7 @@ export default function WordDefinition({ word }: Props): ReactElement {
   return (
     <div className={`${word.partOfSpeech} word-definition`}>
       {/* {title ? <h3>{word.word}</h3> : null} */}
+      <h3>As a {partOfSpeechDict[word.partOfSpeech]}</h3>
       {word.definition.map((definition) => {
         return (
           <p key={definition}>

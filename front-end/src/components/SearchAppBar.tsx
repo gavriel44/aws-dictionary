@@ -21,12 +21,7 @@ const Search = styled("div")(({ theme }) => ({
   "&:hover": {
     backgroundColor: alpha(theme.palette.common.white, 0.25),
   },
-  // marginLeft: 0,
-  // width: "100%",
-  // [theme.breakpoints.down("sm")]: {
-  //   marginLeft: theme.spacing(1),
-  //   width: "auto",
-  // },
+
   marginLeft: theme.spacing(1),
   width: "auto",
 }));
@@ -48,7 +43,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create("width"),
-    // width: "100%",
     [theme.breakpoints.down("sm")]: {
       width: "7ch",
       "&:focus": {
@@ -94,8 +88,6 @@ export default function SearchAppBar(): React.ReactElement {
   };
 
   const handleSurpriseClick = () => {
-    console.log("in surprise");
-    // this query is for invalidating and making react query not to take the cache
     queryClient.invalidateQueries("rand-wordData");
     navigate("words/rand-word");
   };
@@ -162,9 +154,7 @@ export default function SearchAppBar(): React.ReactElement {
             noWrap
             component="div"
             sx={{
-              // flexGrow: 1,
               display: { xs: "none", sm: "block" },
-              // border: "solid black",
             }}
           >
             GAVRI D
@@ -174,7 +164,6 @@ export default function SearchAppBar(): React.ReactElement {
             sx={{
               flexGrow: 1,
               display: { xs: "none", sm: "flex" },
-              // border: "solid black",
               justifyContent: "flex-start",
             }}
           >
@@ -203,7 +192,6 @@ export default function SearchAppBar(): React.ReactElement {
             </SearchIconWrapper>
             <StyledInputBase
               inputRef={inputRef}
-              // value={searchInputState}
               placeholder="Search…"
               inputProps={{
                 "aria-label": "search",
@@ -213,10 +201,6 @@ export default function SearchAppBar(): React.ReactElement {
                   setSearchInputState(e.currentTarget.value);
                 },
               }}
-              // onChange={(e) => {
-              //   console.log(e.target.value);
-              //   setSearchInputState(e.target.value);
-              // }}
             />
           </Search>
         </Toolbar>

@@ -6,7 +6,6 @@ export default function Words(): ReactElement {
   const context = useOutletContext();
   return (
     <div className="words">
-      {/* this is words */}
       <Outlet context={context} />
     </div>
   );

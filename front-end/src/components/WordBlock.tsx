@@ -20,7 +20,6 @@ export default function WordBlock(): ReactElement {
   const [searchHistory, setSearchHistory] = useOutletContext<OutletContext>();
   const { word: currentWord } = useParams<string>();
   const isSurpriseWord = currentWord === "rand-word";
-  // const [randomPart, setRandomPart] = useState("n");
 
   const baseUrl = "https://v8pauve0t1.execute-api.us-east-1.amazonaws.com";
 
@@ -30,16 +29,9 @@ export default function WordBlock(): ReactElement {
 
   let searchUrl = `${baseUrl}/word/${capitalizedWord}`;
   if (isSurpriseWord) {
-    // console.log("in comp");
-    searchUrl = baseUrl + "/partOfSpeech" + "/" + "n";
+    searchUrl =
+      baseUrl + "/partOfSpeech" + "/" + (Math.random() < 0.5 ? "n" : "v");
   }
-
-  // useEffect(() => {
-  //   return () => {
-  //     console.log("in effect");
-  //     setRandomPart(Math.random() < 0.5 ? "n" : "v");
-  //   };
-  // }, []);
 
   const fetchData = async () => {
     const res = await axios.get(searchUrl);
@@ -55,13 +47,6 @@ export default function WordBlock(): ReactElement {
     refetch,
   } = useQuery<IWordDefinition, AxiosError>(`${currentWord}Data`, fetchData, {
     refetchOnWindowFocus: false,
-  });
-
-  useEffect(() => {
-    // if (isSurpriseWord) {
-    //   refetch();
-    // }
-    console.log("in effect");
   });
 
   useEffect(() => {
@@ -97,7 +82,7 @@ export default function WordBlock(): ReactElement {
       </Box>
     );
   }
-  console.log(wordDefinition);
+
   if (isWordDefinition(wordDefinition)) {
     return (
       <div className="word-block">

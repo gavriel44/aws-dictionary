@@ -1,6 +1,5 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
 import React, { ReactElement, useState } from "react";
-// import Image from "./test4.jpg";
 import "./homeStyle.css";
 import { useNavigate } from "react-router-dom";
 import { lettersOnly } from "../../utils/help";

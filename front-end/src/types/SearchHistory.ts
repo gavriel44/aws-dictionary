@@ -9,15 +9,7 @@ export interface Word {
   firstLetter: string;
 }
 
-export enum PartOfSpeech {
-  n = "noun",
-  v = "verb",
-  p = "pronoun",
-  adj = "adjective",
-  adv = "adverb",
-  c = "conjunction",
-  i = "interjection",
-}
+export type PartOfSpeech = "n" | "v" | "p" | "adj" | "adv" | "c" | "i";
 
 export type IWordDefinition = Word[];
 
