@@ -31,11 +31,9 @@ jobs:
         uses: cypress-io/github-action@v2
         with:
           start: npm start
+          wait-on: 'http://localhost:3000'
           # Working directory containing Cypress folder
           working-directory: ./front-end
 #           # Path of project to run
 #           project: ./front-end
-          # Whether or not to use headless mode
-          headless: true
-          # Whether or not to run install
-          install: true
+
