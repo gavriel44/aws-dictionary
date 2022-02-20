@@ -153,4 +153,4 @@ By order of importance:
 
 ## License
 
-:copyright: Gavrile Frant
+:copyright: Gavriel Frant
