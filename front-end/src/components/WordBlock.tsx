@@ -44,7 +44,6 @@ export default function WordBlock(): ReactElement {
     isLoading,
     error,
     data: wordDefinition,
-    refetch,
   } = useQuery<IWordDefinition, AxiosError>(`${currentWord}Data`, fetchData, {
     refetchOnWindowFocus: false,
   });
