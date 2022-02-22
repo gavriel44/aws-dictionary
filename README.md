@@ -15,7 +15,7 @@ Microservices Architecture mindset. Feel free to check out the project [road map
 2. [Services and Build](#services)
 3. [Structure](#structure)
 4. [Tests](#tests)
-5. [CI/CDp - Github Actions](#ci/cd)
+5. [CI/CD - Github Actions](#ci/cd)
 6. [Api](#api)
 7. [Front-end](#front-end)
 8. [Build](#build-front)
